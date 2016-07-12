@@ -1,0 +1,24 @@
+<%= title [l(:label_group_permission_plural), group_permissions_path], @group.name %>
+<%= form_for(@gps, :url => group_permission_path(@group), :method => :put) do %>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%= t(:field_id) %></th>
+        <th><%= t(:field_description) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% GroupPermission.permissions.each do |id| %>
+        <tr class="<%= cycle("odd", "even") %>">
+          <td style="text-align: left">
+            <%= check_box_tag 'group_permissions_setup[permissions][]', id, @gps.permissions.include?(id),
+              :id => nil %>
+            <%= id %>
+          </td>
+          <td style="text-align: left"><%= GroupPermission.permission_description(id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <p><%= submit_tag l(:button_change) %></p>
+<% end %>

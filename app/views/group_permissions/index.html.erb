@@ -1,0 +1,16 @@
+<h2><%= t(:label_group_permission_plural) %></h2>
+<table class="list groups">
+  <thead>
+    <tr>
+      <th><%= t(:field_name) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @groups.each do |g| %>
+      <% rowclass = cycle("odd", "even") %>
+      <tr class="<%= rowclass %>">
+        <td style="text-align: left"><%= link_to g, group_permission_path(g) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
