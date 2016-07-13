@@ -1,2 +1,4 @@
 pt-BR:
   label_group_permission_plural: Permissões de grupos
+  permission_group_permissions_description: Visualização/modificação das 
+    permissões de grupo.

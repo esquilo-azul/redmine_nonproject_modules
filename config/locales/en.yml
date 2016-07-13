@@ -1,2 +1,3 @@
 en:
   label_group_permission_plural: Groups' permissions
+  permission_group_permissions_description: Read/write access to groups' permissions.

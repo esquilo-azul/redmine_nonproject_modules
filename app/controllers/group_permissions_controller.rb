@@ -1,5 +1,5 @@
 class GroupPermissionsController < ApplicationController
-  before_action :require_admin
+  require_permission 'group_permissions'
   before_action :set_group, only: [:show, :update]
 
   def index
