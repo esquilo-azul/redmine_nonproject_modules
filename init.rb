@@ -2,6 +2,9 @@
 
 require 'redmine'
 
+require 'redmine_nonproject_modules/patches/controller_patch'
+require 'redmine_nonproject_modules/patches/group_patch'
+
 Redmine::Plugin.register :redmine_nonproject_modules do
   name 'Redmine non-project modules'
   author 'Eduardo Henrique Bogoni'
