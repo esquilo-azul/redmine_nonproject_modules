@@ -24,6 +24,7 @@ class GroupPermission < ActiveRecord::Base
     end
 
     def permission?(permission, user = false)
+      return permission_by_hash?(permission, user) if permission.is_a?(Hash)
       assert_permission_exist(permission)
       user ||= User.current
       return true if user.admin
@@ -39,6 +40,12 @@ class GroupPermission < ActiveRecord::Base
     def assert_permission_exist(key)
       return if permissions_hash.include?(key)
       fail "Not found \"#{key}\" in GroupPermission::permissions"
+    end
+
+    def permission_by_hash?(hash, user)
+      fail 'Hasy should have :or parameter' unless hash[:or].present?
+      ps = hash[:or].is_a?(Array) ? hash[:or] : [hash[:or]]
+      ps.any? { |p| permission?(p, user) }
     end
   end
 end
