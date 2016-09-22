@@ -28,10 +28,15 @@ class GroupPermission < ActiveRecord::Base
       assert_permission_exist(permission)
       user ||= User.current
       return true if user.admin
-      user.groups.any? { |g| GroupPermission.where(group: g, permission: permission).any? }
+      user_groups(user).any? { |g| GroupPermission.where(group: g, permission: permission).any? }
     end
 
     private
+
+    def user_groups(user)
+      return [Group.anonymous] if user.anonymous?
+      [Group.anonymous, Group.non_member] + user.groups
+    end
 
     def permissions_hash
       @permissions ||= {}
