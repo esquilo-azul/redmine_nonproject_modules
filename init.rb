@@ -14,7 +14,7 @@ Redmine::Plugin.register :redmine_nonproject_modules do
 
   Redmine::MenuManager.map :admin_menu do |menu|
     menu.push :group_permissions, { controller: 'group_permissions', action: 'index' },
-              caption: :label_group_permission_plural,
+              caption: :label_group_permission_plural, after: :groups,
               if: proc { GroupPermission.permission?('group_permissions') }
   end
 end
