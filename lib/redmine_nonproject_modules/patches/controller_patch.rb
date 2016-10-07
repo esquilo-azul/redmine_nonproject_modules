@@ -15,8 +15,7 @@ module RedmineNonprojectModules
       module InstanceMethods
         def before_action_require_permission(permission)
           return true if GroupPermission.permission?(permission)
-          render_403
-          false
+          deny_access
         end
       end
     end
