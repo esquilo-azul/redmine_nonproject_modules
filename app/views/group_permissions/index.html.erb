@@ -3,6 +3,9 @@
   <thead>
     <tr>
       <th><%= t(:field_name) %></th>
+      <% if GroupPermission.permission?('group_merge') %>
+        <th></th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
@@ -10,6 +13,11 @@
       <% rowclass = cycle("odd", "even") %>
       <tr class="<%= rowclass %>">
         <td style="text-align: left"><%= link_to g, group_permission_path(g) %></td>
+        <% if GroupPermission.permission?('group_merge') %>
+          <td class="buttons">
+            <%= link_to t(:merge), merge_group_path(g) %>
+          </td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

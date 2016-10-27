@@ -1,4 +1,11 @@
 pt-BR:
+  field_target: 'Alvo'
+  group_will_be_removed: 'O grupo "%{group}" será removido.'
+  in_both_group: Em ambos os grupos.
+  label_group_permission: Permissão de grupo
   label_group_permission_plural: Grupos / Permissões
+  merge: Mesclar
+  group_will_receive_elements: 'O grupo "%{group}" receberá os seguintes elementos:'
+  only_in_group: 'Somente em "%{group}".'
   permission_group_permissions_description: Visualização/modificação das 
     permissões de grupo.

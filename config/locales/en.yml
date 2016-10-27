@@ -1,3 +1,10 @@
 en:
+  field_target: 'Target'
+  group_will_be_removed: 'The group "%{group}" will be removed.'
+  in_both_group: In both groups.
+  label_group_permission: Group permission
   label_group_permission_plural: Groups / Permissions
+  merge: Merge
+  group_will_receive_elements: 'The group "%{group}" will receive the following elements:'
+  only_in_group: 'Only in "%{group}".'
   permission_group_permissions_description: Read/write access to groups' permissions.

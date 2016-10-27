@@ -1,3 +1,4 @@
+<%= render partial: 'member_context', locals: { group: @group } %>
 <%= title [l(:label_group_permission_plural), group_permissions_path], @group.name %>
 <%= form_for(@gps, :url => group_permission_path(@group), :method => :put) do %>
   <table class="list">

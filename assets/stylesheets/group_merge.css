@@ -1,0 +1,11 @@
+.GroupMergeHelper_element_only_on_target {
+  /* Normal */
+}
+
+.GroupMergeHelper_element_only_on_source {
+  color: green;
+}
+
+.GroupMergeHelper_element_on_both {
+  color: #007;
+}

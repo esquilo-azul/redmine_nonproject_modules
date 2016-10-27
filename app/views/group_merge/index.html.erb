@@ -1,0 +1,12 @@
+<%= title [l(:label_group_permission_plural), group_permission_path], 
+  [@group_merge.source, group_permission_path(@group_merge.source)],
+  t(:merge) %>
+<%= labelled_form_for @group_merge, url: merge_check_group_path(@group_merge.source) do |f| %>
+  <%= error_messages_for 'group_merge' %>
+  <div class="box tabular">
+    <p>
+      <%= f.select :target_id, @targets_list, label: t(:field_target) %>
+    </p>
+  </div>
+  <%= submit_tag t(:merge) %>
+<% end %>

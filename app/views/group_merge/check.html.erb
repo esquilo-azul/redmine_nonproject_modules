@@ -1,0 +1,35 @@
+<%= stylesheet_link_tag 'group_merge', plugin: 'redmine_nonproject_modules' %>
+<%= title [l(:label_group_permission_plural), group_permission_path], 
+  [@group_merge.source, group_permission_path(@group_merge.source)],
+  t(:merge) %>
+<p>
+  <%= t(:group_will_be_removed, group: @group_merge.source) %>
+  <br/>
+  <%= t(:group_will_receive_elements, group: @group_merge.target) %>
+</p>
+<p>
+  <span class="GroupMergeHelper_element_only_on_target">
+    <%= t(:only_in_group, group: @group_merge.target) %>
+  </span>
+  <br/>
+  <span class="GroupMergeHelper_element_only_on_source">
+    <%= t(:only_in_group, group: @group_merge.source) %>
+  </span>
+  <br/>
+  <span class="GroupMergeHelper_element_on_both">
+    <%= t(:in_both_group) %>
+  </span>
+</p>
+<ul>
+  <% group_merge_elements_sorted(@group_merge).each do |x| %>
+    <li class="<%= x[2] %>">
+      <strong><%= x[0] %>: </strong><%= x[1] %>
+    </li>
+  <% end %>
+</ul>
+<%= labelled_form_for @group_merge, url: merge_confirm_group_path(@group_merge.source) do |f| %>
+  <p><strong>Confirma a mesclagem?</strong></p>
+  <%= f.hidden_field :target_id %>
+  <%= submit_tag t(:merge) %>
+  <%= link_to t(:button_back), merge_group_path(@group_merge.source) %>
+<% end %>
