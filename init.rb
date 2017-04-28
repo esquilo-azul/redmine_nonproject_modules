@@ -19,6 +19,8 @@ Redmine::Plugin.register :redmine_nonproject_modules do
               caption: :label_group_permission_plural, after: :groups,
               if: proc { GroupPermission.permission?('group_permissions') }
   end
+
+  ActiveScaffold.delayed_setup = true
 end
 
 Rails.configuration.to_prepare do
