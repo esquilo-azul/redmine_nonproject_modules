@@ -74,7 +74,7 @@ module RedmineNonprojectModules
 
         def parse_permissions(p)
           return parse_permissions(p.values) if p.is_a?(Hash)
-          return p.map { |v| parse_permissions(v) } if p.is_a?(Enumerable)
+          return p.flat_map { |v| parse_permissions(v) } if p.is_a?(Enumerable)
           [p.to_s]
         end
       end
