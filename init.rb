@@ -26,4 +26,5 @@ end
 Rails.configuration.to_prepare do
   GroupPermission.add_permission('group_permissions')
   GroupPermission.add_permission('group_merge')
+  require_dependency 'redmine_nonproject_modules/patches/user_patch'
 end
