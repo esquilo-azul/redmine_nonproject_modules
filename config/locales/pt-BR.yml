@@ -7,5 +7,5 @@ pt-BR:
   merge: Mesclar
   group_will_receive_elements: 'O grupo "%{group}" receberá os seguintes elementos:'
   only_in_group: 'Somente em "%{group}".'
-  permission_group_permissions_description: Visualização/modificação das 
+  permission_group_permissions_description: Visualização/modificação das
     permissões de grupo.
