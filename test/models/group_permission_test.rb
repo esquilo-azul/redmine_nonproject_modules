@@ -21,6 +21,7 @@ class GroupPermissionTest < ActionController::TestCase
     @routes.disable_clear_and_finalize = false
     assert_generates '/my_dummy', controller: 'my_dummy', action: 'index'
     GroupPermission.add_permission('dummy_permission')
+    GroupPermission.add_permission('include', dependencies: [:dummy_permission])
   end
 
   def test_permissions_setup
@@ -56,7 +57,40 @@ class GroupPermissionTest < ActionController::TestCase
     assert_response :success
   end
 
+  test 'depends permission' do
+    no_admin = users(:users_002)
+    g = Group.create!(name: 'My group')
+    g.users << no_admin
+    assert_dummy_includes(no_admin, false, false)
+    GroupPermission.create!(group: g, permission: 'dummy_permission')
+    assert_dummy_includes(no_admin, true, false)
+    GroupPermission.where(group: g, permission: 'dummy_permission').destroy_all
+    assert_dummy_includes(no_admin, false, false)
+    GroupPermission.create!(group: g, permission: 'include')
+    assert_dummy_includes(no_admin, true, true)
+  end
+
+  test 'blocks no existing dependencies' do
+    assert_raise do
+      ::GroupPermission.add_permission('recursive1', dependencies: %w(not_exist))
+    end
+  end
+
+  test 'no redefine dependencies' do
+    key = 'permission1'
+    ::GroupPermission.add_permission(key)
+    assert 0, ::GroupPermission.permission(key).dependencies.count
+    ::GroupPermission.add_permission(key, dependencies: %w(dummy_permission))
+    assert 0, ::GroupPermission.permission(key).dependencies.count
+  end
+
   private
+
+  def assert_dummy_includes(user, dummy, include)
+    e = { dummy_permission: dummy, include: include }
+    a = Hash[e.keys.map { |p| [p, user.permission?(p)] }]
+    assert_equal e, a
+  end
 
   def with_controller(controller_class, &block)
     old_controller = @controller

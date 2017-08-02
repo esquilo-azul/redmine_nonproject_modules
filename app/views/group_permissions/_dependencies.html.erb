@@ -1,0 +1,10 @@
+<ul>
+  <% permission.dependencies.each do |d| %>
+    <li>
+      <%= d %>
+      <% if d.dependencies.any? %>
+        <%= render partial: 'dependencies', locals: {permission: d } %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

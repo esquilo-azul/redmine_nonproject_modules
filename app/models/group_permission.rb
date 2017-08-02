@@ -11,7 +11,7 @@ class GroupPermission < ActiveRecord::Base
 
   class << self
     def permissions
-      @permissions.keys
+      permissions_hash.values
     end
 
     def add_permission(key, options = {})
@@ -20,24 +20,24 @@ class GroupPermission < ActiveRecord::Base
     end
 
     def permission_description(key)
-      assert_permission_exist(key).description
+      permission(key).description
     end
 
     def permission?(permission, user = false)
       return permission_by_hash?(permission, user) if permission.is_a?(Hash)
-      assert_permission_exist(permission).user_has?(user || User.current)
+      permission(permission).user_has?(user || User.current)
+    end
+
+    def permission(key)
+      key = key.to_s
+      return permissions_hash[key] if permissions_hash.key?(key)
+      fail "Not found \"#{key}\" in GroupPermission::permissions"
     end
 
     private
 
     def permissions_hash
       @permissions ||= {}.with_indifferent_access
-    end
-
-    def assert_permission_exist(key)
-      key = key.to_s
-      return permissions_hash[key] if permissions_hash.key?(key)
-      fail "Not found \"#{key}\" in GroupPermission::permissions"
     end
 
     def permission_by_hash?(hash, user)
@@ -48,17 +48,19 @@ class GroupPermission < ActiveRecord::Base
   end
 
   class Permission
+    include ::Eac::SimpleCache
+
     class << self
       def sanitize_key(k)
         k.to_s.downcase
       end
     end
 
-    attr_reader :key
+    attr_reader :key, :dependencies
 
     def initialize(key, options)
       @key = self.class.sanitize_key(key)
-      @options = options.with_indifferent_access
+      @dependencies = (options[:dependencies] || []).map { |k| ::GroupPermission.permission(k) }
     end
 
     def description
@@ -71,7 +73,17 @@ class GroupPermission < ActiveRecord::Base
 
     def user_has?(user)
       return true if user.admin
-      GroupPermission.where(group: user_groups(user), permission: key).any?
+      GroupPermission.where(group: user_groups(user), permission: depends_recursive.to_a).any?
+    end
+
+    def depends_recursive(visited = Set.new)
+      return [] if visited.include?(key)
+      r = Set.new([key])
+      visited << key
+      depends.each do |d|
+        r += d.depends_recursive(visited)
+      end
+      r
     end
 
     def <=>(other)
@@ -83,6 +95,10 @@ class GroupPermission < ActiveRecord::Base
     def user_groups(user)
       return [Group.anonymous] if user.anonymous?
       [Group.anonymous, Group.non_member] + user.groups
+    end
+
+    def depends
+      ::GroupPermission.permissions.select { |p| p.dependencies.include?(self) }
     end
   end
 end

@@ -1,0 +1,14 @@
+table.group_permissions_list td {
+  text-align: left;
+  vertical-align: middle;
+}
+
+table.group_permissions_list td.dependencies ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+table.group_permissions_list td.dependencies ul ul {
+  margin-left: 1.0em;
+}

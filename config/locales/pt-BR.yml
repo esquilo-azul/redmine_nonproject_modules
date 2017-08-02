@@ -1,5 +1,6 @@
 pt-BR:
   field_target: 'Alvo'
+  field_dependencies: Dependências
   group_will_be_removed: 'O grupo "%{group}" será removido.'
   in_both_group: Em ambos os grupos.
   label_group_permission: Permissão de grupo

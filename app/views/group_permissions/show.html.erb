@@ -1,22 +1,33 @@
+<%= stylesheet_link_tag 'group_permissions', plugin: 'redmine_nonproject_modules' %>
 <%= render partial: 'member_context', locals: { group: @group } %>
 <%= title [l(:label_group_permission_plural), group_permissions_path], @group.name %>
 <%= form_for(@gps, :url => group_permission_path(@group), :method => :put) do %>
-  <table class="list">
+  <table class="list group_permissions_list">
     <thead>
       <tr>
         <th><%= t(:field_id) %></th>
+        <th><%= t(:field_dependencies) %></th>
         <th><%= t(:field_description) %></th>
       </tr>
     </thead>
     <tbody>
       <% GroupPermission.permissions.sort.each do |id| %>
         <tr class="<%= cycle("odd", "even") %>">
-          <td style="text-align: left">
-            <%= check_box_tag 'group_permissions_setup[permissions][]', id, @gps.permissions.include?(id),
+          <td>
+            <%= check_box_tag 'group_permissions_setup[permissions][]', id, @gps.permissions.include?(id.key),
               :id => nil %>
             <%= id %>
           </td>
-          <td style="text-align: left"><%= GroupPermission.permission_description(id) %></td>
+          <td class="dependencies">
+            <% if id.dependencies.any? %>
+              <%= render partial: 'dependencies', locals: {permission: id } %>
+            <% else %>
+              -
+            <% end %>
+          </td>
+          <td>
+            <%= GroupPermission.permission_description(id) %>
+          </td>
         </tr>
       <% end %>
     </tbody>
