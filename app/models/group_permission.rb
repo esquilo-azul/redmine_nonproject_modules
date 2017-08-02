@@ -6,7 +6,7 @@ class GroupPermission < ActiveRecord::Base
                                                        case_sensitive: false }
 
   def permission=(value)
-    self[:permission] = value.downcase if value.is_a?(String)
+    self[:permission] = Permission.sanitize_key(value)
   end
 
   class << self
@@ -14,36 +14,29 @@ class GroupPermission < ActiveRecord::Base
       @permissions.keys
     end
 
-    def add_permission(key, description = nil)
-      permissions_hash[key.to_s.downcase] = description
+    def add_permission(key, options = {})
+      p = Permission.new(key, options)
+      permissions_hash[p.key] = p unless permissions_hash.key?(p.key)
     end
 
     def permission_description(key)
-      assert_permission_exist(key)
-      permissions_hash[key] || I18n.t("permission_#{key}_description")
+      assert_permission_exist(key).description
     end
 
     def permission?(permission, user = false)
       return permission_by_hash?(permission, user) if permission.is_a?(Hash)
-      assert_permission_exist(permission)
-      user ||= User.current
-      return true if user.admin
-      user_groups(user).any? { |g| GroupPermission.where(group: g, permission: permission).any? }
+      assert_permission_exist(permission).user_has?(user || User.current)
     end
 
     private
 
-    def user_groups(user)
-      return [Group.anonymous] if user.anonymous?
-      [Group.anonymous, Group.non_member] + user.groups
-    end
-
     def permissions_hash
-      @permissions ||= {}
+      @permissions ||= {}.with_indifferent_access
     end
 
     def assert_permission_exist(key)
-      return if permissions_hash.include?(key)
+      key = key.to_s
+      return permissions_hash[key] if permissions_hash.key?(key)
       fail "Not found \"#{key}\" in GroupPermission::permissions"
     end
 
@@ -51,6 +44,45 @@ class GroupPermission < ActiveRecord::Base
       fail 'Hasy should have :or parameter' unless hash[:or].present?
       ps = hash[:or].is_a?(Array) ? hash[:or] : [hash[:or]]
       ps.any? { |p| permission?(p, user) }
+    end
+  end
+
+  class Permission
+    class << self
+      def sanitize_key(k)
+        k.to_s.downcase
+      end
+    end
+
+    attr_reader :key
+
+    def initialize(key, options)
+      @key = self.class.sanitize_key(key)
+      @options = options.with_indifferent_access
+    end
+
+    def description
+      I18n.t("permission_#{key}_description")
+    end
+
+    def to_s
+      key
+    end
+
+    def user_has?(user)
+      return true if user.admin
+      GroupPermission.where(group: user_groups(user), permission: key).any?
+    end
+
+    def <=>(other)
+      to_s <=> other.to_s
+    end
+
+    private
+
+    def user_groups(user)
+      return [Group.anonymous] if user.anonymous?
+      [Group.anonymous, Group.non_member] + user.groups
     end
   end
 end
