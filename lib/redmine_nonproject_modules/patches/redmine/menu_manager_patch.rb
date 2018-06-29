@@ -83,7 +83,9 @@ module RedmineNonprojectModules
 end
 
 unless ::Redmine::MenuManager::Mapper.included_modules.include?(
-  ::RedmineNonprojectModules::Patches::Redmine::MenuManagerMapperPatch)
+  ::RedmineNonprojectModules::Patches::Redmine::MenuManagerMapperPatch
+)
   ::Redmine::MenuManager::Mapper.send(
-    :include, ::RedmineNonprojectModules::Patches::Redmine::MenuManagerMapperPatch)
+    :include, ::RedmineNonprojectModules::Patches::Redmine::MenuManagerMapperPatch
+  )
 end

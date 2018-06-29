@@ -31,7 +31,7 @@ class GroupPermission < ActiveRecord::Base
     def permission(key)
       key = key.to_s
       return permissions_hash[key] if permissions_hash.key?(key)
-      fail "Not found \"#{key}\" in GroupPermission::permissions"
+      raise "Not found \"#{key}\" in GroupPermission::permissions"
     end
 
     private
@@ -41,7 +41,7 @@ class GroupPermission < ActiveRecord::Base
     end
 
     def permission_by_hash?(hash, user)
-      fail 'Hasy should have :or parameter' unless hash[:or].present?
+      raise 'Hasy should have :or parameter' unless hash[:or].present?
       ps = hash[:or].is_a?(Array) ? hash[:or] : [hash[:or]]
       ps.any? { |p| permission?(p, user) }
     end

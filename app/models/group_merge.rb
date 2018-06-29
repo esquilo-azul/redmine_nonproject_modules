@@ -46,7 +46,7 @@ class GroupMerge
     return ON_BOTH if target_elements.include?(x) && source_elements.include?(x)
     return ONLY_ON_TARGET if target_elements.include?(x)
     return ONLY_ON_SOURCE if source_elements.include?(x)
-    fail "Element is neither on source nor on target: #{x}"
+    raise "Element is neither on source nor on target: #{x}"
   end
 
   def target_elements

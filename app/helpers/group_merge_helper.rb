@@ -3,8 +3,7 @@ module GroupMergeHelper
     r = group_merge.to_merge_elements.map do |x|
       [group_merge_type_element_label(x[0]),
        group_merge_element_label(x[0]),
-       group_merge_element_class(x)
-      ]
+       group_merge_element_class(x)]
     end
     r.sort_by { |x| [x[0], x[1]] }
   end

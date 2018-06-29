@@ -23,6 +23,7 @@ module RedmineNonprojectModules
 end
 
 unless ActionController::Base.included_modules.include?(
-  RedmineNonprojectModules::Patches::ControllerPatch)
+  RedmineNonprojectModules::Patches::ControllerPatch
+)
   ActionController::Base.send(:include, RedmineNonprojectModules::Patches::ControllerPatch)
 end

@@ -38,7 +38,8 @@ class GroupPermissionTest < ActionController::TestCase
 
     g = Group.create!(name: 'My group')
     with_controller(GroupPermissionsController) do
-      put :update, id: g.id, 'group_permissions_setup' => { permissions: ['dummy_permission'] }
+      put :update, params: { id: g.id, 'group_permissions_setup' =>
+          { permissions: ['dummy_permission'] } }
       assert_redirected_to group_permission_path(g)
       assert assigns(:gps)
       assert_equal ['dummy_permission'], assigns(:gps).permissions
@@ -92,11 +93,11 @@ class GroupPermissionTest < ActionController::TestCase
     assert_equal e, a
   end
 
-  def with_controller(controller_class, &block)
+  def with_controller(controller_class)
     old_controller = @controller
     begin
       @controller = controller_class.new
-      block.call
+      yield
     ensure
       @controller = old_controller
     end
