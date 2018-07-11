@@ -10,7 +10,7 @@ Redmine::Plugin.register :redmine_nonproject_modules do
   name 'Redmine non-project modules'
   author 'Eduardo Henrique Bogoni'
   description 'Customizações para a SJAP'
-  version '0.0.2'
+  version '0.1.0'
   url 'https://github.com/eduardobogoni/redmine_nonproject_modules'
   author_url 'https://github.com/eduardobogoni'
 
