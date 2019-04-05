@@ -1,5 +1,7 @@
 # coding: utf-8
 
+require 'active_scaffold'
+
 require 'redmine'
 
 require 'redmine_nonproject_modules/patches/controller_patch'
