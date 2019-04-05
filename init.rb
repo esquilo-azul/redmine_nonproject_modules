@@ -9,9 +9,9 @@ require 'redmine_nonproject_modules/patches/redmine/menu_manager_patch'
 Redmine::Plugin.register :redmine_nonproject_modules do
   name 'Redmine non-project modules'
   author 'Eduardo Henrique Bogoni'
-  description 'Customizações para a SJAP'
+  description 'Support to non-project modules.'
   version '0.1.0'
-  url 'https://github.com/eduardobogoni/redmine_nonproject_modules'
+  url 'https://github.com/esquilo-azul/redmine_nonproject_modules'
   author_url 'https://github.com/eduardobogoni'
 
   Redmine::MenuManager.map :admin_menu do |menu|
