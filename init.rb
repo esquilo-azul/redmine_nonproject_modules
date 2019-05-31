@@ -13,7 +13,7 @@ Redmine::Plugin.register :redmine_nonproject_modules do
   name 'Redmine non-project modules'
   author 'Eduardo Henrique Bogoni'
   description 'Support to non-project modules.'
-  version '0.1.1'
+  version '0.1.2'
   url 'https://github.com/esquilo-azul/redmine_nonproject_modules'
   author_url 'https://github.com/eduardobogoni'
 
