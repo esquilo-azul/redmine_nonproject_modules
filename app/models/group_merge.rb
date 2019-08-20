@@ -1,3 +1,5 @@
+require 'virtus'
+
 class GroupMerge
   include ActiveModel::Model
   include Virtus.model
