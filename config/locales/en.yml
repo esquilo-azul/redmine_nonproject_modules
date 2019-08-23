@@ -4,7 +4,9 @@ en:
   in_both_group: In both groups.
   label_group_permission: Group permission
   label_group_permission_plural: Groups / Permissions
+  label_nonproject_modules: Non-project
   merge: Merge
+  none_module_available: 'No modules available.'
   group_will_receive_elements: 'The group "%{group}" will receive the following elements:'
   only_in_group: 'Only in "%{group}".'
   permission_group_permissions_description: Read/write access to groups' permissions.

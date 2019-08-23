@@ -1,0 +1,7 @@
+<h2><%= t(:label_nonproject_modules) %></h2>
+<% if User.current.anonymous? %>
+  <p>Faça o <%= link_to('login', signin_path) %> para que o acesso aos módulos
+    apareçam à direita.</p>
+<% else %>
+  <p>Navegue pelo menu à direita.</p>
+<% end %>

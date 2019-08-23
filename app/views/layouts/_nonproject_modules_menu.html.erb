@@ -1,0 +1,14 @@
+<% any_available = false %>
+<% ::Redmine::Plugin.registered_plugins.keys.each do |plugin_key| %>
+  <% content = render_menu plugin_key %>
+  <% if content %>
+    <% any_available = true %>
+    <div style="margin-bottom: 1.0em">
+      <h4><%= t("menu_#{plugin_key}") %></h4>
+      <%= content %>
+    </div>
+  <% end %>
+<% end %>
+<% unless any_available %>
+  <p><em><%= t(:none_module_available) %></em></p>
+<% end %>

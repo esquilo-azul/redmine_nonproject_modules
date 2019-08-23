@@ -5,7 +5,9 @@ pt-BR:
   in_both_group: Em ambos os grupos.
   label_group_permission: Permissão de grupo
   label_group_permission_plural: Grupos / Permissões
+  label_nonproject_modules: Não-projetos
   merge: Mesclar
+  none_module_available: 'Nenhum módulo disponível.'
   group_will_receive_elements: 'O grupo "%{group}" receberá os seguintes elementos:'
   only_in_group: 'Somente em "%{group}".'
   permission_group_permissions_description: Visualização/modificação das
