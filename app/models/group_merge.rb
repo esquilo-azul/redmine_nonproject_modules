@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'virtus'
 
 class GroupMerge
@@ -39,16 +41,17 @@ class GroupMerge
   end
 
   def associations_to_merge
-    [:users, :memberships, :permissions]
+    %i[users memberships permissions]
   end
 
   private
 
-  def element_on_status(x)
-    return ON_BOTH if target_elements.include?(x) && source_elements.include?(x)
-    return ONLY_ON_TARGET if target_elements.include?(x)
-    return ONLY_ON_SOURCE if source_elements.include?(x)
-    raise "Element is neither on source nor on target: #{x}"
+  def element_on_status(element)
+    return ON_BOTH if target_elements.include?(element) && source_elements.include?(element)
+    return ONLY_ON_TARGET if target_elements.include?(element)
+    return ONLY_ON_SOURCE if source_elements.include?(element)
+
+    raise "Element is neither on source nor on target: #{element}"
   end
 
   def target_elements
@@ -68,8 +71,8 @@ class GroupMerge
   end
 
   def source_new_elements
-    source_elements.select do |x|
-      !target_elements.include?(x)
+    source_elements.reject do |x|
+      target_elements.include?(x)
     end
   end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RedmineNonprojectModules
   module Patches
     module ControllerPatch
@@ -15,6 +17,7 @@ module RedmineNonprojectModules
       module InstanceMethods
         def before_action_require_permission(permission)
           return true if GroupPermission.permission?(permission)
+
           deny_access
         end
       end

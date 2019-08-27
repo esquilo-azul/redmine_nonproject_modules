@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 require 'action_dispatch/routing/inspector'
 
@@ -73,7 +75,7 @@ class GroupPermissionTest < ActionController::TestCase
 
   test 'blocks no existing dependencies' do
     assert_raise do
-      ::GroupPermission.add_permission('recursive1', dependencies: %w(not_exist))
+      ::GroupPermission.add_permission('recursive1', dependencies: %w[not_exist])
     end
   end
 
@@ -81,7 +83,7 @@ class GroupPermissionTest < ActionController::TestCase
     key = 'permission1'
     ::GroupPermission.add_permission(key)
     assert 0, ::GroupPermission.permission(key).dependencies.count
-    ::GroupPermission.add_permission(key, dependencies: %w(dummy_permission))
+    ::GroupPermission.add_permission(key, dependencies: %w[dummy_permission])
     assert 0, ::GroupPermission.permission(key).dependencies.count
   end
 

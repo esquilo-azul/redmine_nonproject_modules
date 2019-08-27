@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GroupMergeController < ApplicationController
   require_permission 'group_merge'
   helper GroupMergeHelper
@@ -10,6 +12,7 @@ class GroupMergeController < ApplicationController
   def check
     @group_merge = ::GroupMerge.new(check_parameters)
     return if @group_merge.valid?
+
     build_targets_list
     render :index
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module GroupMergeHelper
   def group_merge_elements_sorted(group_merge)
     r = group_merge.to_merge_elements.map do |x|
@@ -8,8 +10,8 @@ module GroupMergeHelper
     r.sort_by { |x| [x[0], x[1]] }
   end
 
-  def group_merge_element_class(x)
-    "GroupMergeHelper_element_#{x[1]}"
+  def group_merge_element_class(element)
+    "GroupMergeHelper_element_#{element[1]}"
   end
 
   def group_merge_type_element_label(element)
@@ -21,11 +23,11 @@ module GroupMergeHelper
     respond_to?(m) ? send(m, element) : element.to_s
   end
 
-  def group_merge_member_element_label(m)
-    "#{t(:label_project)}: #{m.project} (#{m.roles.to_a.join(', ')})"
+  def group_merge_member_element_label(member)
+    "#{t(:label_project)}: #{member.project} (#{member.roles.to_a.join(', ')})"
   end
 
-  def group_merge_group_permission_element_label(gp)
-    gp.permission
+  def group_merge_group_permission_element_label(group_permission)
+    group_permission.permission
   end
 end

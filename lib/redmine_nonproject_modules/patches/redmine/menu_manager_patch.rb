@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RedmineNonprojectModules
   module Patches
     module Redmine
@@ -72,10 +74,11 @@ module RedmineNonprojectModules
           controller_class.const_get('PERMISSIONS')
         end
 
-        def parse_permissions(p)
-          return parse_permissions(p.values) if p.is_a?(Hash)
-          return p.flat_map { |v| parse_permissions(v) } if p.is_a?(Enumerable)
-          [p.to_s]
+        def parse_permissions(permission)
+          return parse_permissions(permission.values) if permission.is_a?(Hash)
+          return permission.flat_map { |v| parse_permissions(v) } if permission.is_a?(Enumerable)
+
+          [permission.to_s]
         end
       end
     end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RedmineNonprojectModules
   module Patches
     module GroupPatch
@@ -12,6 +14,7 @@ module RedmineNonprojectModules
         def add_permission(permission)
           permission = permission.permission if permission.is_a?(::GroupPermission)
           return if permissions.pluck(:permission).include?(permission)
+
           ::GroupPermission.create!(group: self, permission: permission)
         end
       end

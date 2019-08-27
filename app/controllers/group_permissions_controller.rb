@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class GroupPermissionsController < ApplicationController
   require_permission 'group_permissions'
-  before_action :set_group, only: [:show, :update]
+  before_action :set_group, only: %i[show update]
 
   def index
     @groups = Group.sorted

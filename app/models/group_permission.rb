@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'eac_ruby_utils/simple_cache'
 
 class GroupPermission < ActiveRecord::Base
@@ -27,23 +29,26 @@ class GroupPermission < ActiveRecord::Base
 
     def permission?(permission, user = false)
       return permission_by_hash?(permission, user) if permission.is_a?(Hash)
+
       permission(permission).user_has?(user || User.current)
     end
 
     def permission(key)
       key = key.to_s
       return permissions_hash[key] if permissions_hash.key?(key)
+
       raise "Not found \"#{key}\" in GroupPermission::permissions"
     end
 
     private
 
     def permissions_hash
-      @permissions ||= {}.with_indifferent_access
+      @permissions_hash ||= {}.with_indifferent_access
     end
 
     def permission_by_hash?(hash, user)
-      raise 'Hasy should have :or parameter' unless hash[:or].present?
+      raise 'Hasy should have :or parameter' if hash[:or].blank?
+
       ps = hash[:or].is_a?(Array) ? hash[:or] : [hash[:or]]
       ps.any? { |p| permission?(p, user) }
     end
@@ -53,8 +58,8 @@ class GroupPermission < ActiveRecord::Base
     include ::EacRubyUtils::SimpleCache
 
     class << self
-      def sanitize_key(k)
-        k.to_s.downcase
+      def sanitize_key(key)
+        key.to_s.downcase
       end
     end
 
@@ -75,11 +80,13 @@ class GroupPermission < ActiveRecord::Base
 
     def user_has?(user)
       return true if user.admin
+
       GroupPermission.where(group: user_groups(user), permission: depends_recursive.to_a).any?
     end
 
     def depends_recursive(visited = Set.new)
       return [] if visited.include?(key)
+
       r = Set.new([key])
       visited << key
       depends.each do |d|
@@ -96,6 +103,7 @@ class GroupPermission < ActiveRecord::Base
 
     def user_groups(user)
       return [Group.anonymous] if user.anonymous?
+
       [Group.anonymous, Group.non_member] + user.groups
     end
 

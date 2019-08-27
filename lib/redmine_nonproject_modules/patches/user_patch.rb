@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RedmineNonprojectModules
   module Patches
     module UserPatch
