@@ -9,8 +9,8 @@ module RedmineNonprojectModules
       end
 
       module ClassMethods
-        def require_permission(permission)
-          before_action { |c| c.before_action_require_permission(permission) }
+        def require_permission(permission, options = {})
+          before_action(options) { |c| c.before_action_require_permission(permission) }
         end
       end
 
