@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,lib}/**/*', 'init.rb']
 
-  s.add_dependency 'active_scaffold', '~> 3.5', '>= 3.5.4'
+  s.add_dependency 'active_scaffold', '~> 3.5'
   s.add_dependency 'activemodel-associations'
   s.add_dependency 'eac_ruby_utils', '~> 0.10', '>= 0.10.1'
   s.add_dependency 'virtus'
