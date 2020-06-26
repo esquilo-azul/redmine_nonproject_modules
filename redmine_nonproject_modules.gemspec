@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'active_scaffold', '~> 3.5'
   s.add_dependency 'activemodel-associations'
+  s.add_dependency 'eac_rails_utils', '~> 0.11', '>= 0.11.2'
   s.add_dependency 'eac_ruby_utils', '~> 0.33'
   s.add_dependency 'virtus'
 end
