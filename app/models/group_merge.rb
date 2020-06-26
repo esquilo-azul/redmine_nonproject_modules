@@ -1,12 +1,8 @@
 # frozen_string_literal: true
 
-require 'virtus'
+require 'eac_rails_utils/models/tableless'
 
-class GroupMerge
-  include ActiveModel::Model
-  include Virtus.model
-  include ActiveModel::Associations
-
+class GroupMerge < ::EacRailsUtils::Models::Tableless
   ONLY_ON_TARGET = :only_on_target
   ONLY_ON_SOURCE = :only_on_source
   ON_BOTH = :on_both
@@ -18,14 +14,6 @@ class GroupMerge
 
   validates :source, presence: true
   validates :target, presence: true
-
-  def [](attr)
-    send(attr)
-  end
-
-  def []=(attr, value)
-    send("#{attr}=", value)
-  end
 
   def to_merge_elements
     (target_elements + source_elements).uniq.map do |x|
