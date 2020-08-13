@@ -23,5 +23,5 @@ module RedmineNonprojectModules
 end
 
 unless ::Group.included_modules.include?(RedmineNonprojectModules::Patches::GroupPatch)
-  ::Group.send(:include, RedmineNonprojectModules::Patches::GroupPatch)
+  ::Group.include RedmineNonprojectModules::Patches::GroupPatch
 end

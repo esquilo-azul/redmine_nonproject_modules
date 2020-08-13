@@ -17,5 +17,5 @@ module RedmineNonprojectModules
 end
 
 unless ::User.included_modules.include?(RedmineNonprojectModules::Patches::UserPatch)
-  ::User.send(:include, RedmineNonprojectModules::Patches::UserPatch)
+  ::User.include RedmineNonprojectModules::Patches::UserPatch
 end
