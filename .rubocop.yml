@@ -1,10 +1,17 @@
-Rails:
-  Enabled: true
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.4
+  TargetRailsVersion: 4.2
+
+Layout/LineLength:
+  Max: 100
+  Exclude:
+    - 'db/migrate/**/*'
 
 Style/Documentation:
-  Enabled: false
-
-Style/AsciiComments:
   Enabled: false
 
 Metrics/AbcSize:
@@ -12,12 +19,20 @@ Metrics/AbcSize:
     - 'db/migrate/**/*'
     - 'test/**/*'
 
-Metrics/LineLength:
-  Max: 100
+Metrics/BlockLength:
   Exclude:
-    - 'db/migrate/**/*'
+    - spec/**/*.rb
 
 Metrics/MethodLength:
   Exclude:
     - 'db/migrate/**/*'
     - 'test/**/*'
+
+Style/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
