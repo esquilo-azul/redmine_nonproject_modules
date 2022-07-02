@@ -30,8 +30,3 @@ Redmine::Plugin.register :redmine_nonproject_modules do
               caption: :label_nonproject_modules
   end
 end
-
-Rails.configuration.to_prepare do
-  GroupPermission.add_permission('group_permissions')
-  GroupPermission.add_permission('group_merge')
-end
