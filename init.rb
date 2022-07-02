@@ -29,8 +29,6 @@ Redmine::Plugin.register :redmine_nonproject_modules do
     menu.push :nonproject_modules, { controller: 'nonproject_modules', action: 'index', id: nil },
               caption: :label_nonproject_modules
   end
-
-  ActiveScaffold.delayed_setup = true
 end
 
 Rails.configuration.to_prepare do
