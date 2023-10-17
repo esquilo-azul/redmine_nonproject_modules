@@ -1,38 +1,55 @@
-require:
-  - rubocop-rails
-  - rubocop-rspec
-
-AllCops:
-  TargetRubyVersion: 2.4
-  TargetRailsVersion: 4.2
-
-Layout/LineLength:
-  Max: 100
+---
+inherit_gem:
+  eac_ruby_gem_support: ".rubocop.yml"
+Gemspec/RequiredRubyVersion:
   Exclude:
-    - 'db/migrate/**/*'
-
-Style/Documentation:
-  Enabled: false
-
-Metrics/AbcSize:
+  - redmine_nonproject_modules.gemspec
+Naming/VariableNumber:
   Exclude:
-    - 'db/migrate/**/*'
-    - 'test/**/*'
-
-Metrics/BlockLength:
+  - spec/models/group_permission_spec.rb
+RSpec/IndexedLet:
   Exclude:
-    - spec/**/*.rb
-
-Metrics/MethodLength:
+  - spec/models/group_merge_spec.rb
+RSpec/MultipleMemoizedHelpers:
   Exclude:
-    - 'db/migrate/**/*'
-    - 'test/**/*'
-
-Style/HashEachMethods:
-  Enabled: true
-
-Style/HashTransformKeys:
-  Enabled: true
-
-Style/HashTransformValues:
-  Enabled: true
+  - spec/models/group_merge_spec.rb
+Rails/ActiveSupportOnLoad:
+  Exclude:
+  - lib/redmine_nonproject_modules/patches/controller_patch.rb
+Rails/ApplicationRecord:
+  Exclude:
+  - app/models/group_permission.rb
+Rails/IndexWith:
+  Exclude:
+  - spec/models/group_permission_spec.rb
+Rails/RedundantPresenceValidationOnBelongsTo:
+  Exclude:
+  - app/models/group_merge.rb
+  - app/models/group_permission.rb
+Rails/UniqueValidationWithoutIndex:
+  Exclude:
+  - app/models/group_permission.rb
+Style/HashAsLastArrayItem:
+  Exclude:
+  - spec/lib/redmine_nonproject_modules/patches/redmine/menu_manager_mapper_patch_spec.rb
+Style/HashConversion:
+  Exclude:
+  - spec/models/group_permission_spec.rb
+Style/OptionalBooleanParameter:
+  Exclude:
+  - app/models/group_permission.rb
+Style/RedundantConstantBase:
+  Exclude:
+  - app/models/group_merge.rb
+  - config/initializers/group_permissions.rb
+  - init.rb
+  - lib/redmine_nonproject_modules/patches/group_patch.rb
+  - lib/redmine_nonproject_modules/patches/redmine/i18n_patch.rb
+  - lib/redmine_nonproject_modules/patches/redmine/menu_manager_patch.rb
+  - lib/redmine_nonproject_modules/patches/redmine/plugin.rb
+  - lib/redmine_nonproject_modules/patches/user_patch.rb
+  - lib/tasks/redmine_nonproject_modules.rake
+  - redmine_nonproject_modules.gemspec
+  - spec/lib/redmine_nonproject_modules/patches/redmine/menu_manager_mapper_patch_spec.rb
+  - spec/models/group_merge_spec.rb
+  - spec/models/group_permission_spec.rb

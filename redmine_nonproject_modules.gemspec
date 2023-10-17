@@ -21,5 +21,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'jquery-rails', '~> 4.6'
 
   # Test/development gems
-  s.add_development_dependency 'eac_ruby_gem_support', '~> 0.5.1'
+  s.add_development_dependency 'eac_ruby_gem_support', '~> 0.8.1'
 end
