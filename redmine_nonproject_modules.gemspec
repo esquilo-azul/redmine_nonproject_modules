@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,lib}/**/*', 'init.rb']
 
   s.add_dependency 'eac_active_scaffold', '~> 0.5', '>= 0.5.1'
-  s.add_dependency 'eac_rails_utils', '~> 0.21'
+  s.add_dependency 'eac_rails_utils', '~> 0.22', '>= 0.22.2'
   s.add_dependency 'eac_ruby_utils', '~> 0.119', '>= 0.119.2'
   s.add_dependency 'jquery-rails', '~> 4.6'
 
