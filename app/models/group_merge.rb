@@ -12,9 +12,6 @@ class GroupMerge < ::EacRailsUtils::Models::Tableless
   belongs_to :source, class_name: 'Group'
   belongs_to :target, class_name: 'Group'
 
-  validates :source, presence: true
-  validates :target, presence: true
-
   def to_merge_elements
     (target_elements + source_elements).uniq.map do |x|
       [x[0], element_on_status(x)]
