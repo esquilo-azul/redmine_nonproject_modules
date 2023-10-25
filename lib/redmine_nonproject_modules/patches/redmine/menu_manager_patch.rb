@@ -3,18 +3,20 @@
 module RedmineNonprojectModules
   module Patches
     module Redmine
-      module MenuManagerMapperPatch
-        def self.included(base)
-          base.send(:include, InstanceMethods)
+      module MenuManager
+        module Mapper
+          def self.included(base)
+            base.send(:include, InstanceMethods)
+          end
         end
-      end
 
-      module InstanceMethods
-        def push_controller(*args)
-          e = ::RedmineNonprojectModules::MenuControllerEntry.new(*args)
-          push(*e.build)
-          e.permissions.each do |p|
-            ::GroupPermission.add_permission(p)
+        module InstanceMethods
+          def push_controller(*args)
+            e = ::RedmineNonprojectModules::MenuControllerEntry.new(*args)
+            push(*e.build)
+            e.permissions.each do |p|
+              ::GroupPermission.add_permission(p)
+            end
           end
         end
       end
@@ -23,9 +25,9 @@ module RedmineNonprojectModules
 end
 
 unless Redmine::MenuManager::Mapper.included_modules.include?(
-  RedmineNonprojectModules::Patches::Redmine::MenuManagerMapperPatch
+  RedmineNonprojectModules::Patches::Redmine::MenuManager::Mapper
 )
   Redmine::MenuManager::Mapper.include(
-    RedmineNonprojectModules::Patches::Redmine::MenuManagerMapperPatch
+    RedmineNonprojectModules::Patches::Redmine::MenuManager::Mapper
   )
 end
