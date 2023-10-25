@@ -1,10 +1,15 @@
 # frozen_string_literal: true
 
+require 'eac_ruby_utils/core_ext'
+
 module RedmineNonprojectModules
   class MenuControllerEntry
-    def initialize(controller, options = {})
-      @controller = controller.to_s
-      @options = options.with_indifferent_access
+    # @!method initialize(controller, options = {})
+    # @param controller [String]
+    # @param options [Hash]
+    common_constructor :controller, :options, default: [{}] do
+      self.controller = controller.to_s
+      self.options = options.with_indifferent_access
     end
 
     def build
@@ -16,8 +21,6 @@ module RedmineNonprojectModules
     end
 
     private
-
-    attr_reader :controller, :options
 
     def build_name
       r = controller
@@ -45,11 +48,11 @@ module RedmineNonprojectModules
     end
 
     def action
-      @options[:action] || 'index'
+      options[:action] || 'index'
     end
 
     def id
-      @options[:id]
+      options[:id]
     end
 
     def permissions_const
