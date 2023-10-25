@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.homepage    = ::RedmineNonprojectModules::HOMEPAGE
 
   s.files = Dir['{app,config,lib}/**/*', 'init.rb']
+  s.required_ruby_version = '>= 2.7.0'
 
   s.add_dependency 'eac_active_scaffold', '~> 0.5', '>= 0.5.1'
   s.add_dependency 'eac_rails_utils', '~> 0.22', '>= 0.22.2'
