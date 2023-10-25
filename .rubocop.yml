@@ -1,9 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Rails/IndexWith:
-  Exclude:
-  - spec/models/group_permission_spec.rb
 Rails/RedundantPresenceValidationOnBelongsTo:
   Exclude:
   - app/models/group_merge.rb
