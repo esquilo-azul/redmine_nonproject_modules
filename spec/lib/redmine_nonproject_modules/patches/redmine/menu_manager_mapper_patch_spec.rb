@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe ::RedmineNonprojectModules::Patches::Redmine::MenuManagerMapperPatch do
-  let(:controller_entry_class) { ::RedmineNonprojectModules::Patches::Redmine::ControllerEntry }
+RSpec.describe RedmineNonprojectModules::Patches::Redmine::MenuManagerMapperPatch do
+  let(:controller_entry_class) { RedmineNonprojectModules::Patches::Redmine::ControllerEntry }
 
   describe 'build' do
     let(:expected) do

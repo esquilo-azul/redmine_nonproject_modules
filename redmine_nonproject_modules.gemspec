@@ -8,10 +8,10 @@ require 'redmine_nonproject_modules/version'
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = 'redmine_nonproject_modules'
-  s.version     = ::RedmineNonprojectModules::VERSION
-  s.authors     = [::RedmineNonprojectModules::VERSION]
-  s.summary     = ::RedmineNonprojectModules::SUMMARY
-  s.homepage    = ::RedmineNonprojectModules::HOMEPAGE
+  s.version     = RedmineNonprojectModules::VERSION
+  s.authors     = [RedmineNonprojectModules::VERSION]
+  s.summary     = RedmineNonprojectModules::SUMMARY
+  s.homepage    = RedmineNonprojectModules::HOMEPAGE
 
   s.files = Dir['{app,config,lib}/**/*', 'init.rb']
   s.required_ruby_version = '>= 2.7.0'

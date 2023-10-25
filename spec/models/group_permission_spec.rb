@@ -88,7 +88,7 @@ RSpec.describe GroupPermission, type: :feature do
 
   it 'blocks no existing dependencies' do
     expect { described_class.add_permission('recursive1', dependencies: %w[not_exist]) }
-      .to raise_error(::StandardError)
+      .to raise_error(StandardError)
   end
 
   describe 'no redefine dependencies' do

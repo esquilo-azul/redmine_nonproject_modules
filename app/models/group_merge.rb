@@ -2,7 +2,7 @@
 
 require 'eac_rails_utils/models/tableless'
 
-class GroupMerge < ::EacRailsUtils::Models::Tableless
+class GroupMerge < EacRailsUtils::Models::Tableless
   ONLY_ON_TARGET = :only_on_target
   ONLY_ON_SOURCE = :only_on_source
   ON_BOTH = :on_both
