@@ -26,7 +26,7 @@ RSpec.describe GroupPermission, type: :feature do
   context 'when no admin access protected page' do
     include_context 'with logged user', 'jsmith'
 
-    let(:no_admin) { users(:users_002) }
+    let(:no_admin) { users(:users_002) } # rubocop:disable Naming/VariableNumber
 
     before do
       visit '/group_permissions'
@@ -53,7 +53,7 @@ RSpec.describe GroupPermission, type: :feature do
   end
 
   describe 'permission dependency' do
-    let(:no_admin) { users(:users_002) }
+    let(:no_admin) { users(:users_002) } # rubocop:disable Naming/VariableNumber
     let(:g) do
       r = Group.create!(name: 'My group')
       r.users << no_admin
