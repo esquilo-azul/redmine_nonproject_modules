@@ -2,7 +2,7 @@
 
 require 'eac_ruby_utils/simple_cache'
 
-class GroupPermission < ActiveRecord::Base
+class GroupPermission < ActiveRecord::Base # rubocop:disable Rails/ApplicationRecord
   belongs_to :group
 
   validates :group, presence: true
