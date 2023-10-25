@@ -20,7 +20,7 @@ RSpec.describe GroupMerge do
     r
   end
 
-  describe '#save' do
+  describe '#save' do # rubocop:disable RSpec/MultipleMemoizedHelpers
     let(:p1) { ::Project.find(1) }
     let(:r1) { ::Role.find(1) }
     let(:m1) { create_member(p1, gs, r1) }
@@ -52,7 +52,7 @@ RSpec.describe GroupMerge do
 
     it { expect(::Group).to exist(gs.id) }
 
-    context 'when groups are merged' do
+    context 'when groups are merged' do # rubocop:disable RSpec/MultipleMemoizedHelpers
       before do
         ::GroupMerge.new(source: gs, target: gt).save!
         gt.reload
@@ -71,7 +71,7 @@ RSpec.describe GroupMerge do
     end
   end
 
-  describe '#to_merge_elements' do
+  describe '#to_merge_elements' do # rubocop:disable RSpec/MultipleMemoizedHelpers
     let(:es) { ::GroupMerge.new(source: gs, target: gt).to_merge_elements }
 
     it { expect(gs.users.count).to eq(2) }
