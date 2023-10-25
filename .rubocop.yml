@@ -1,9 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-Rails/ActiveSupportOnLoad:
-  Exclude:
-  - lib/redmine_nonproject_modules/patches/controller_patch.rb
 Rails/ApplicationRecord:
   Exclude:
   - app/models/group_permission.rb
