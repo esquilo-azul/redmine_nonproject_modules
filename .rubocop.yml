@@ -1,9 +1,6 @@
 ---
 inherit_gem:
   eac_ruby_gem_support: ".rubocop.yml"
-RSpec/IndexedLet:
-  Exclude:
-  - spec/models/group_merge_spec.rb
 RSpec/MultipleMemoizedHelpers:
   Exclude:
   - spec/models/group_merge_spec.rb

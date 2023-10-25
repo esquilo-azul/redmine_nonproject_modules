@@ -3,9 +3,9 @@
 RSpec.describe GroupMerge do
   fixtures :projects, :roles, :users
 
-  let(:u1) { ::User.find(5) }
-  let(:u2) { ::User.find(6) }
-  let(:u3) { ::User.find(7) }
+  let(:u1) { ::User.find(5) } # rubocop:disable RSpec/IndexedLet
+  let(:u2) { ::User.find(6) } # rubocop:disable RSpec/IndexedLet
+  let(:u3) { ::User.find(7) } # rubocop:disable RSpec/IndexedLet
 
   let(:gs) do
     r = ::Group.create!(name: 'Fonte')
@@ -24,8 +24,8 @@ RSpec.describe GroupMerge do
     let(:p1) { ::Project.find(1) }
     let(:r1) { ::Role.find(1) }
     let(:m1) { create_member(p1, gs, r1) }
-    let(:gp1) { 'group_permissions' }
-    let(:gp2) { 'group_merge' }
+    let(:gp1) { 'group_permissions' } # rubocop:disable RSpec/IndexedLet
+    let(:gp2) { 'group_merge' } # rubocop:disable RSpec/IndexedLet
 
     before do
       p1
