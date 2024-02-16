@@ -1,6 +1,3 @@
 ---
 inherit_gem:
   eac_rails_gem_support: ".rubocop.yml"
-Lint/SymbolConversion:
-  Exclude:
-  - lib/redmine_nonproject_modules/menu_controller_entry.rb

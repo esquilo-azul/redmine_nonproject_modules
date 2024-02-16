@@ -40,7 +40,7 @@ module RedmineNonprojectModules
     end
 
     def build_caption
-      "label_#{build_name}".to_sym
+      :"label_#{build_name}"
     end
 
     def controller_class
