@@ -1,10 +1,6 @@
 ---
 inherit_gem:
   eac_rails_gem_support: ".rubocop.yml"
-Lint/RedundantCopDisableDirective:
-  Exclude:
-  - app/models/group_permission.rb
-  - spec/models/group_merge_spec.rb
 Lint/SymbolConversion:
   Exclude:
   - lib/redmine_nonproject_modules/menu_controller_entry.rb
