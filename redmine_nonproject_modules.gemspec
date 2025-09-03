@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'eac_active_scaffold', '~> 0.7'
   s.add_dependency 'eac_rails_utils', '~> 0.26', '>= 0.26.1'
-  s.add_dependency 'eac_ruby_utils', '~> 0.121'
+  s.add_dependency 'eac_ruby_utils', '~> 0.128', '>= 0.128.3'
   s.add_dependency 'i18n-recursive-lookup', '~> 0.0', '>= 0.0.5'
   s.add_dependency 'jquery-rails', '~> 4.6'
 
