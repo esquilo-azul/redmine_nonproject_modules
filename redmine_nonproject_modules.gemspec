@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,lib}/**/*', 'init.rb']
   s.required_ruby_version = '>= 2.7.0'
 
-  s.add_dependency 'eac_active_scaffold', '~> 0.5', '>= 0.5.3'
+  s.add_dependency 'eac_active_scaffold', '~> 0.7'
   s.add_dependency 'eac_rails_utils', '~> 0.23', '>= 0.23.3'
   s.add_dependency 'eac_ruby_utils', '~> 0.121'
   s.add_dependency 'i18n-recursive-lookup', '~> 0.0', '>= 0.0.5'
