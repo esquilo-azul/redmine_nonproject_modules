@@ -17,7 +17,7 @@ module RedmineNonprojectModules
       end
 
       def webrick?
-        defined?(::WEBrick) && defined?(::WEBrick::VERSION)
+        defined?(::WEBrick::VERSION)
       end
 
       def passenger?

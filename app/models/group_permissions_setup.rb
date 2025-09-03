@@ -10,7 +10,7 @@ class GroupPermissionsSetup
     @permissions ||= GroupPermission.where(group: group).pluck(:permission)
   end
 
-  def save
+  def save # rubocop:disable Naming/PredicateMethod
     ActiveRecord::Base.transaction do
       GroupPermission.where(group: group).destroy_all
       permissions.each do |p|
