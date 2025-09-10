@@ -4,7 +4,7 @@ module RedmineNonprojectModules
   AUTHOR = 'Eduardo Henrique Bogoni'
   HOMEPAGE = 'https://github.com/esquilo-azul/redmine_nonproject_modules'
   SUMMARY = 'Support to non-project modules.'
-  VERSION = '0.5.3'
+  VERSION = '0.5.4'
 
   module Version
   end
