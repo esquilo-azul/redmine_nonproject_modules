@@ -63,7 +63,7 @@ RSpec.describe GroupPermission, type: :feature do
 
     def assert_dummy_includes(user, dummy, include)
       e = { dummy_permission: dummy, include: include }
-      a = e.keys.to_h { |p| [p, user.permission?(p)] }
+      a = e.keys.index_with { |p| user.permission?(p) }
       expect(a).to eq(e)
     end
 
