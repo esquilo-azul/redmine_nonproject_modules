@@ -5,4 +5,7 @@ module RedmineNonprojectModules
   HOMEPAGE = 'https://github.com/esquilo-azul/redmine_nonproject_modules'
   SUMMARY = 'Support to non-project modules.'
   VERSION = '0.5.3'
+
+  module Version
+  end
 end
