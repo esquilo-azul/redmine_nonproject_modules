@@ -15,6 +15,8 @@ Redmine::Plugin.register :redmine_nonproject_modules do
   author_url 'https://github.com/eduardobogoni'
 end
 
-Rails.autoloaders.each do |loader|
-  loader.ignore File.join(__dir__, 'lib/redmine_nonproject_modules/patches')
+if Rails.respond_to?(:autoloaders)
+  Rails.autoloaders.each do |loader|
+    loader.ignore File.join(__dir__, 'lib/redmine_nonproject_modules/patches')
+  end
 end
