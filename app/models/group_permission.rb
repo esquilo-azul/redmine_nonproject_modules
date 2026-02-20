@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'eac_ruby_utils/simple_cache'
-
 class GroupPermission < ActiveRecord::Base
   belongs_to :group
 

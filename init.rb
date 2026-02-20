@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'active_scaffold'
-require 'jquery/rails'
-
 require 'redmine'
 require 'redmine_nonproject_modules/version'
 
