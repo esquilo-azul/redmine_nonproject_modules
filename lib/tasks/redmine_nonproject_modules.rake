@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-RedminePluginsHelper::TestTasks::Rspec.register(:redmine_nonproject_modules, :test)
+RedminePluginsHelper::TestTasks::Auto.register(:redmine_nonproject_modules)
