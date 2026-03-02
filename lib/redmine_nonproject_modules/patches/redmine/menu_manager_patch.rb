@@ -24,9 +24,7 @@ module RedmineNonprojectModules
   end
 end
 
-unless Redmine::MenuManager::Mapper.included_modules.include?(
-  RedmineNonprojectModules::Patches::Redmine::MenuManager::Mapper
-)
+unless Redmine::MenuManager::Mapper.include?(RedmineNonprojectModules::Patches::Redmine::MenuManager::Mapper)
   Redmine::MenuManager::Mapper.include(
     RedmineNonprojectModules::Patches::Redmine::MenuManager::Mapper
   )

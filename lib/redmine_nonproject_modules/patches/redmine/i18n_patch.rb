@@ -26,4 +26,4 @@ end
 x = Redmine::I18n
 y = RedmineNonprojectModules::Patches::Redmine::I18nPatch
 
-x.send(:include, y) unless x.included_modules.include?(y)
+x.send(:include, y) unless x.include?(y)
