@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'eac_rails_utils', '~> 0.27'
   s.add_dependency 'eac_ruby_utils', '~> 0.130'
   s.add_dependency 'i18n-recursive-lookup', '~> 0.0', '>= 0.0.5'
-  s.add_dependency 'jquery-rails', '~> 4.6'
+  s.add_dependency 'jquery-rails', '~> 4.6', '>= 4.6.1'
 
   # Test/development gems
   s.add_development_dependency 'eac_rails_gem_support', '~> 0.11', '>= 0.11.1'
