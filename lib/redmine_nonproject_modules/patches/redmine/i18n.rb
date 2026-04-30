@@ -23,7 +23,4 @@ module RedmineNonprojectModules
   end
 end
 
-x = Redmine::I18n
-y = RedmineNonprojectModules::Patches::Redmine::I18n
-
-x.send(:include, y) unless x.include?(y)
+Redmine::I18n.patch_self(RedmineNonprojectModules::Patches::Redmine::I18n)
