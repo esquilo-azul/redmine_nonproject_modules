@@ -13,7 +13,8 @@ module RedmineNonprojectModules
 
         def fixed_l(*args)
           if (args.first.is_a?(Time) || args.first.is_a?(Date)) && args.last.is_a?(Hash)
-            ::I18n.l(args.first, args.last)
+            options = args.extract_options!
+            ::I18n.l(*args, **options)
           else
             original_l(*args)
           end
