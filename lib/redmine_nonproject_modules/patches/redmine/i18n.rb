@@ -5,7 +5,7 @@ require 'redmine/i18n'
 module RedmineNonprojectModules
   module Patches
     module Redmine
-      module I18nPatch
+      module I18n
         common_concern do
           alias_method :original_l, :l
           alias_method :l, :fixed_l
@@ -24,6 +24,6 @@ module RedmineNonprojectModules
 end
 
 x = Redmine::I18n
-y = RedmineNonprojectModules::Patches::Redmine::I18nPatch
+y = RedmineNonprojectModules::Patches::Redmine::I18n
 
 x.send(:include, y) unless x.include?(y)
