@@ -43,7 +43,6 @@ RSpec.describe GroupMerge do
     it { expect(gs.permissions.count).to eq(1) }
     it { expect(gs.permissions.pluck(:permission)).to include(gp1) }
 
-    it { expect(2).to be_truthy }
     it { expect(gt.users).to include(u2) }
     it { expect(gt.users).to include(u3) }
     it { expect(gt.memberships.count).to eq(0) }
@@ -78,7 +77,6 @@ RSpec.describe GroupMerge do
     it { expect(gs.users).to include(u1) }
     it { expect(gs.users).to include(u2) }
 
-    it { expect(2).to be_truthy }
     it { expect(gt.users).to include(u2) }
     it { expect(gt.users).to include(u3) }
 
