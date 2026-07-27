@@ -6,8 +6,8 @@ module RedmineNonprojectModules
       module Plugin
         common_concern
 
-        def nonprojects_menu(&block)
-          ::Redmine::MenuManager.map(id, &block)
+        def nonprojects_menu(&)
+          ::Redmine::MenuManager.map(id, &)
         end
       end
     end

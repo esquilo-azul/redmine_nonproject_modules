@@ -11,8 +11,8 @@ module RedmineNonprojectModules
         end
 
         module InstanceMethods
-          def push_controller(*args)
-            e = ::RedmineNonprojectModules::MenuControllerEntry.new(*args)
+          def push_controller(*)
+            e = ::RedmineNonprojectModules::MenuControllerEntry.new(*)
             push(*e.build)
             e.permissions.each do |p|
               ::GroupPermission.add_permission(p)
