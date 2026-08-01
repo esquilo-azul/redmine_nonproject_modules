@@ -3,3 +3,7 @@
 source 'https://rubygems.org'
 
 gemspec
+
+File.join(File.dirname(__FILE__), 'SelfGemfile.local').then do |local_gemfile|
+  eval_gemfile local_gemfile if File.exist?(local_gemfile)
+end
