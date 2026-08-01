@@ -1,5 +1,6 @@
 en:
   field_target: 'Target'
+  field_dependencies: Dependencies
   group_will_be_removed: 'The group "%{group}" will be removed.'
   in_both_group: In both groups.
   label_group_permission: Group permission
