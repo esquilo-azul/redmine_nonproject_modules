@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.homepage    = RedmineNonprojectModules::HOMEPAGE
 
   s.files = Dir['{app,config,lib}/**/*', 'init.rb']
-  s.required_ruby_version = '>= 3.2'
+  s.required_ruby_version = '>= 3.2' # rubocop:disable Gemspec/RequiredRubyVersion
 
   s.add_dependency 'eac_active_scaffold', '~> 0.8', '>= 0.8.1'
   s.add_dependency 'eac_rails_utils', '~> 0.29', '>= 0.29.5'
