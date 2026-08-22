@@ -23,5 +23,3 @@ module RedmineNonprojectModules
     end
   end
 end
-
-Redmine::I18n.patch_self(RedmineNonprojectModules::Patches::Redmine::I18n)

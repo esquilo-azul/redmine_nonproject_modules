@@ -13,5 +13,3 @@ module RedmineNonprojectModules
     end
   end
 end
-
-Redmine::Plugin.include(RedmineNonprojectModules::Patches::Redmine::Plugin)

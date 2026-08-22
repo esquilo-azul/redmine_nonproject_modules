@@ -21,7 +21,3 @@ module RedmineNonprojectModules
     end
   end
 end
-
-unless Group.include?(RedmineNonprojectModules::Patches::GroupPatch)
-  Group.include RedmineNonprojectModules::Patches::GroupPatch
-end

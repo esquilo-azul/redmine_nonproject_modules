@@ -15,7 +15,3 @@ module RedmineNonprojectModules
     end
   end
 end
-
-unless User.include?(RedmineNonprojectModules::Patches::UserPatch)
-  User.include RedmineNonprojectModules::Patches::UserPatch
-end

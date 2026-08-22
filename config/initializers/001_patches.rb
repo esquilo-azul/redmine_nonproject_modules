@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
-require 'redmine_nonproject_modules/patches/controller_patch'
-require 'redmine_nonproject_modules/patches/group_patch'
-require 'redmine_nonproject_modules/patches/redmine/i18n'
-require 'redmine_nonproject_modules/patches/redmine/menu_manager/mapper'
-require 'redmine_nonproject_modules/patches/redmine/plugin'
-require 'redmine_nonproject_modules/patches/user_patch'
+ActiveSupport.on_load(:action_controller) do
+  include RedmineNonprojectModules::Patches::ControllerPatch
+end
+Group.include RedmineNonprojectModules::Patches::GroupPatch
+Redmine::I18n.patch_self(RedmineNonprojectModules::Patches::Redmine::I18n)
+Redmine::MenuManager::Mapper.include(RedmineNonprojectModules::Patches::Redmine::MenuManagerMapperPatch)
+Redmine::Plugin.include(RedmineNonprojectModules::Patches::Redmine::Plugin)
+User.include RedmineNonprojectModules::Patches::UserPatch

@@ -15,6 +15,3 @@ module RedmineNonprojectModules
     end
   end
 end
-
-Redmine::MenuManager::Mapper
-  .include(RedmineNonprojectModules::Patches::Redmine::MenuManagerMapperPatch)

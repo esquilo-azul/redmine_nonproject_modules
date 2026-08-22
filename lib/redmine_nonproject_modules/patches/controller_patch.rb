@@ -24,9 +24,3 @@ module RedmineNonprojectModules
     end
   end
 end
-
-unless ActionController::Base.include?(RedmineNonprojectModules::Patches::ControllerPatch)
-  ActiveSupport.on_load(:action_controller) do
-    include RedmineNonprojectModules::Patches::ControllerPatch
-  end
-end
