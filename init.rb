@@ -11,9 +11,3 @@ Redmine::Plugin.register :redmine_nonproject_modules do
   url RedmineNonprojectModules::HOMEPAGE
   author_url 'https://github.com/eduardobogoni'
 end
-
-if Rails.respond_to?(:autoloaders)
-  Rails.autoloaders.each do |loader|
-    loader.ignore File.join(__dir__, 'lib/redmine_nonproject_modules/patches')
-  end
-end
