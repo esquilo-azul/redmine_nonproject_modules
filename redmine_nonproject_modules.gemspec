@@ -16,11 +16,11 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,lib}/**/*', 'init.rb']
   s.required_ruby_version = '>= 3.2' # rubocop:disable Gemspec/RequiredRubyVersion
 
-  s.add_dependency 'eac_active_scaffold', '~> 0.8', '>= 0.8.1'
-  s.add_dependency 'eac_rails_utils', '~> 0.31'
-  s.add_dependency 'eac_ruby_utils', '~> 0.134'
+  s.add_dependency 'eac_active_scaffold', '~> 0.10'
+  s.add_dependency 'eac_rails_utils', '~> 0.33'
+  s.add_dependency 'eac_ruby_utils', '~> 0.134', '>= 0.134.1'
   s.add_dependency 'jquery-rails', '~> 4.6', '>= 4.6.1'
 
   # Test/development gems
-  s.add_development_dependency 'eac_rails_gem_support', '~> 0.15'
+  s.add_development_dependency 'eac_rails_gem_support', '~> 0.15', '>= 0.15.2'
 end
