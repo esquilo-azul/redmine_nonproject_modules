@@ -18,9 +18,9 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'eac_active_scaffold', '~> 0.10'
   s.add_dependency 'eac_rails_utils', '~> 0.33'
-  s.add_dependency 'eac_ruby_utils', '~> 0.134', '>= 0.134.1'
+  s.add_dependency 'eac_ruby_utils', '~> 0.135'
   s.add_dependency 'jquery-rails', '~> 4.6', '>= 4.6.1'
 
   # Test/development gems
-  s.add_development_dependency 'eac_rails_gem_support', '~> 0.15', '>= 0.15.2'
+  s.add_development_dependency 'eac_rails_gem_support', '~> 0.15', '>= 0.15.3'
 end
